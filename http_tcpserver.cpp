@@ -30,7 +30,7 @@ namespace http
     {
         m_socketAddress.sin_family = AF_INET;
         m_socketAddress.sin_port = htons(m_port);
-        m_socketAddress.sin_addr.s_addr = inet_addr(m_ip_address.c_str());
+        inet_pton(AF_INET, m_ip_address.c_str(), &(m_socketAddress.sin_addr));
 
         if (startServer() != 0)
         {
